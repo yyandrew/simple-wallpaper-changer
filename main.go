@@ -12,7 +12,6 @@ import (
 
 func detectDesktopEnv() string {
 	var out bytes.Buffer
-	// cmd := exec.Command("/bin/sh", "-c", "ls /usr/bin/")
 	cmd := exec.Command("/bin/sh", "-c", "ls /usr/bin | grep session")
 	cmd.Stdout = &out
 	err := cmd.Run()

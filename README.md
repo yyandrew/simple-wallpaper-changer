@@ -6,3 +6,14 @@
 
 * Mac os
 * Linux
+
+## 支持的系统
+
+* Mac os
+* Linux
+  * Unity
+  * LXDE
+  * GNOME
+  * KDE
+  * MATE
+  * XFCE
