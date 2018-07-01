@@ -14,8 +14,8 @@ import (
 
 // DetectDesktopEnv returns which Desktop environment you are using.It should return one of:
 // Unity
-// LXDE
-// GNOME
+// LXDE+
+// GNOME +
 // KDE
 // MATE
 // XFCE
@@ -32,6 +32,10 @@ func DetectDesktopEnv() string {
 		return "LXDE"
 	} else if strings.Contains(output, "gnome-session") {
 		return "GNOME"
+	} else if strings.Contains(output, "xfce4-session") {
+		return "XFCE"
+	} else if strings.Contains(output, "icewm-session") {
+		return "KDE"
 	} else {
 		return ""
 	}
@@ -49,6 +53,11 @@ func ChangeWallPaper(file string) error {
 			cmd = exec.Command("pcmanfm", "-w", file)
 		case "GNOME", "Unity":
 			cmd = exec.Command("gsettings", "set", "org.gnome.desktop.background", "picture-uri", "file://"+file)
+		case "KDE":
+			log.Fatal("Not impelement now")
+		case "XFCE":
+			// cmd = exec.Command("xfconf-query", "--channel", "xfce4-desktop", "--property", "/backdrop/screen0/monitor0/workspace0", "--set", file)
+			log.Fatal("Not impelement now")
 		default:
 			log.Fatal("Not support this desktop environment!")
 		}
